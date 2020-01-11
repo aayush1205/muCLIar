@@ -44,8 +44,42 @@ class Musify(object):
 
         except KeyboardInterrupt:
 
-            val = input("Enter: ")
-            driver.quit()
+
+            quit1()
+    
+
+    def quit1():
+
+
+            print("\n")
+
+            val = input("New song or quit? (enter n or q): ")
+
+            self.quit(self, ff = val)
+
+
+
+
+    def quit(self, ff= None):
+
+        if( ff == "n"):
+
+            print("\n")
+            
+            new = input("Which song? ")
+
+            search_song(self, new)
+
+
+
+
+        elif(ff == "q"):
+            pass
+        else:
+            print("\n")
+            print("Enter valid input: ")
+            quit1()
+
 
 
 """
