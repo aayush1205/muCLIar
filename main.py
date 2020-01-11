@@ -1,11 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import argparse
+import socket
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
+socket.setdefaulttimeout(100)
 #options.binary_location = "/usr/bin/google-chrome"
 
 driver = webdriver.Chrome(executable_path="/home/aayush/Webdriver/bin/chromedriver", chrome_options=chrome_options)
@@ -48,7 +50,10 @@ class Musify(object):
         except KeyboardInterrupt:
 
 
-            self.quit1()
+            try:
+                self.quit1()
+            except:
+                print("Fuck")
     
 
     def quit1(self):
@@ -58,12 +63,12 @@ class Musify(object):
 
             val = input("New song or quit? (enter n or q): ")
 
-            self.quit(self, ff = val)
+            self.quit(ff=val)
 
 
 
 
-    def quit(self, ff= None):
+    def quit (self, ff=None):
 
         if( ff == "n"):
 
@@ -71,7 +76,7 @@ class Musify(object):
             
             new = input("Which song? ")
 
-            self.search_song(self, mus = new)
+            self.search_song(mus = new)
 
 
 
