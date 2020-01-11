@@ -43,6 +43,8 @@ class Musify(object):
                 continue
 
         except KeyboardInterrupt:
+
+            val = input("Enter: ")
             driver.quit()
 
 
