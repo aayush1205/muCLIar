@@ -8,8 +8,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 #options.binary_location = "/usr/bin/google-chrome"
 
-driver = webdriver.Chrome(
-    executable_path="/home/aayush/Webdriver/bin/chromedriver", chrome_options=chrome_options)
+driver = webdriver.Chrome(executable_path="/home/aayush/Webdriver/bin/chromedriver", chrome_options=chrome_options)
 driver.implicitly_wait(10)
 driver.maximize_window()
 
@@ -29,13 +28,17 @@ class Musify(object):
         if exc_type:
             print(exc_type, exc_value, exc_traceback)
 
-    def search_song(self):
-        songl = self.song
+    def search_song(self, mus =  None):
+        if(mus == None):
+            songl = self.song
+        else:
+            songl = mus
+
+
         driver.get("https://youtube.com")
         driver.find_element_by_name("search_query").send_keys(f"{songl}")
         driver.find_element_by_id("search-icon-legacy").click()
-        driver.find_element_by_class_name(
-            "style-scope ytd-video-renderer").click()
+        driver.find_element_by_class_name("style-scope ytd-video-renderer").click()
 
         try:
 
@@ -45,10 +48,10 @@ class Musify(object):
         except KeyboardInterrupt:
 
 
-            quit1()
+            self.quit1()
     
 
-    def quit1():
+    def quit1(self):
 
 
             print("\n")
@@ -68,17 +71,17 @@ class Musify(object):
             
             new = input("Which song? ")
 
-            search_song(self, new)
+            self.search_song(self, mus = new)
 
 
 
 
         elif(ff == "q"):
-            pass
+            driver.quit()
         else:
             print("\n")
             print("Enter valid input: ")
-            quit1()
+            self.quit1()
 
 
 
