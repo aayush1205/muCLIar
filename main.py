@@ -3,6 +3,9 @@ from selenium.webdriver.chrome.options import Options
 import argparse
 import socket
 
+flag = 0
+
+
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
@@ -10,7 +13,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 socket.setdefaulttimeout(100)
 #options.binary_location = "/usr/bin/google-chrome"
 
-driver = webdriver.Chrome(executable_path="/home/aayush/Webdriver/bin/chromedriver", chrome_options=chrome_options)
+driver = webdriver.Chrome(executable_path="/home/aayush/Webdriver/bin/chromedriver", options=chrome_options)
 driver.implicitly_wait(10)
 driver.maximize_window()
 
@@ -30,11 +33,8 @@ class Musify(object):
         if exc_type:
             print(exc_type, exc_value, exc_traceback)
 
-    def search_song(self, mus =  None):
-        if(mus == None):
-            songl = self.song
-        else:
-            songl = mus
+    def search_song(self):
+        songl = self.song
 
 
         driver.get("https://youtube.com")
@@ -48,45 +48,73 @@ class Musify(object):
                 continue
 
         except KeyboardInterrupt:
+            
+            print("\n")
+            driver.quit()
 
+            val = input("New song or quit? (enter n or q): ")
 
-            try:
-                self.quit1()
-            except:
-                print("Fuck")
+            self.quit(val)
+            
     
 
-    def quit1(self):
+    def quit1(self,t1):
 
 
             print("\n")
 
             val = input("New song or quit? (enter n or q): ")
 
-            self.quit(ff=val)
+            return self.quit(val,flag = 0)
 
 
 
 
-    def quit (self, ff=None):
+    def quit (self, ff,flag = 0):
 
-        if( ff == "n"):
+        if(ff == "n"):
 
             print("\n")
             
             new = input("Which song? ")
 
-            self.search_song(mus = new)
+            drivern = webdriver.Chrome(executable_path="/home/aayush/Webdriver/bin/chromedriver", options=chrome_options)
+
+            
+
+            drivern.get("https://youtube.com")
+            drivern.find_element_by_name("search_query").send_keys(f"{new}")
+            drivern.find_element_by_id("search-icon-legacy").click()
+            drivern.find_element_by_class_name("style-scope ytd-video-renderer").click()
+
+
+            try:
+                while True:
+                    continue
+
+            except KeyboardInterrupt:
+                print("\n")
+                drivern.quit()
+                val = input("New song or quit? (enter n or q): ")
+                
+                self.quit(val,flag = 1)
+
 
 
 
 
         elif(ff == "q"):
-            driver.quit()
+
+            if(flag ==0):
+                driver.quit()
+            else:
+                drivern.quit()
+
+            
         else:
             print("\n")
             print("Enter valid input: ")
-            self.quit1()
+            return self.quit1(10)
 
 
 
