@@ -2,14 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import argparse
 import socket
-import getpass
-import pickle
 import time
 import os
 import main_auth
 import main_search
-flag = 0
-
 
 chrome_options = Options()
 chrome_options.add_argument('--no-sandbox')
@@ -40,8 +36,7 @@ class Musify(object):
 
             obj = main_auth.Authenticate(chrome_options)
             obj.auth()
-
-
+            
         else:
 
             obj = main_search.Search(options= chrome_options,song=self.song)
@@ -50,9 +45,11 @@ class Musify(object):
 def parse_args():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-s', '--song', type=str,
+    group = parser.add_mutually_exclusive_group()
+
+    group.add_argument('-s', '--song', type=str,
                         help="Enter the song you wish to hear")
-    parser.add_argument('-c', '--config', action='store_true')
+    group.add_argument('-c', '--config', action='store_true')
     return parser.parse_args()
 
 
