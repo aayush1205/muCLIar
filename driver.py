@@ -39,8 +39,14 @@ class Musify(object):
             
         else:
 
-            obj = main_search.Search(options= chrome_options,song=self.song)
-            obj.search()
+            try:                
+                obj = main_search.Search(options= chrome_options,song=self.song)
+                obj.search()
+            except KeyboardInterrupt:
+                sys.exit()
+
+
+
 
 def parse_args():
 

@@ -59,6 +59,7 @@ class Search():
             while True:
                 continue
         except KeyboardInterrupt:
+            #driver.find_element_by_id("movie_player").click()
             driver.quit()
             print("\n")
             val = input("New song or quit? (enter n or q)")
