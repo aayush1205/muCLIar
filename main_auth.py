@@ -8,9 +8,7 @@ class Authenticate():
     def __init__(self,options):
 
         self.chrome = options
-
-
-
+        
     def auth(self):
 
         options = self.chrome
@@ -24,7 +22,6 @@ class Authenticate():
         print("Logged In Successfully!")
         time.sleep(2)
         pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
-
         driver.quit()
 
 
@@ -32,3 +29,4 @@ class Authenticate():
 
 
 
+ 
