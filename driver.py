@@ -10,6 +10,7 @@ import main_search
 chrome_options = Options()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_extension("/home/aayush/Musify/skipper_crx3.crx")
 socket.setdefaulttimeout(100)
 #executable_path= "/home/aayush/Webdriver/bin/chromedriver"
 # driver.maximize_window()
@@ -39,8 +40,14 @@ class Musify(object):
             
         else:
 
-            obj = main_search.Search(options= chrome_options,song=self.song)
-            obj.search()
+            try:                
+                obj = main_search.Search(options= chrome_options,song=self.song)
+                obj.search()
+            except KeyboardInterrupt:
+                os._exit(1)
+
+
+
 
 def parse_args():
 
