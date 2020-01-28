@@ -1,8 +1,10 @@
 # muCLIar
 
+[![Development Stage](https://img.shields.io/badge/Development-Private_Alpha-red)]()
+
 Coffee, Music and Code! What else could we developers ask for?
 
-But then, long gone are days of slow internet and locally stored songs. **muCLIar** offers you a command line utility that lets you play the song you wish to listen to, directly through **YoutTube** servers. **muCLIar** lets you login and hence plays your "similar song" playlist as well. 
+But then, long gone are days of slow internet and locally stored songs. **muCLIar** is a command line utility that lets you play the song you wish to listen to, directly through your command line. **muCLIar** lets you log in to **Youtube** and hence plays your "similar song" playlist as well, so you can search a song and then enjoy the mood for a long while. 
 
 
 ## Getting Started
@@ -85,6 +87,6 @@ This project is licensed under the Apache License - see the [LICENSE.md](LICENSE
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+* Hat tip to anyone who's code was used
 * Inspiration
 * etc
