@@ -10,10 +10,9 @@ import main_search
 chrome_options = Options()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.add_extension("/home/aayush/mm/muCLIar/skipper_crx3.crx")
+chrome_options.add_extension(os.path.dirname(os.path.abspath(__file__))+"/skipper_crx3.crx")
 socket.setdefaulttimeout(100)
-#executable_path= "/home/aayush/Webdriver/bin/chromedriver"
-# driver.maximize_window()
+
 
 
 class Musify(object):
