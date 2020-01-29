@@ -37,7 +37,7 @@ class Search():
             display = Display(visible=0, size=(1080,1920))
             display.start()            
             driver = webdriver.Chrome(options=options)
-            time.sleep(5)
+            time.sleep(10)
             driver.implicitly_wait(10)
             driver.get("https://www.youtube.com")
 
@@ -96,7 +96,7 @@ class Search():
             print("\n")
 
             
-            print(Fore.BLUE + "Interrupted before call completion. Exiting...")
+            print(Fore.BLUE + "Interrupted before call completion. Exiting..." + Fore.RESET)
             #sys.exit(1)
             os._exit(1)
 
@@ -105,7 +105,7 @@ class Search():
         for c in itertools.cycle(['|', '/', '-', '\\']):
             if self.done:
                 break
-            sys.stdout.write(Fore.LIGHTMAGENTA_EX + '\rSearching for your song ' + c)
+            sys.stdout.write(Fore.LIGHTMAGENTA_EX + '\rSearching for your song ' + c + Fore.RESET)
             sys.stdout.flush()
             time.sleep(0.1)
             
