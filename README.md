@@ -7,58 +7,40 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-1. Selenium
-2. ChromeDriver
-
-```
-Give examples
-```
+1. Conda
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+The repository has the installer script. This is what you need to do to get muCLIar running on your system:
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+1. Clone the repository:
 
 ```
-until finished
+git clone https://github.com/aayush1205/muCLIar.git
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+2. Get into the muCLIar directory:
 
 ```
-Give an example
+cd muCLIar or cd /path/to/muCLIar
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+3. Run the installer: 
 ```
-Give an example
+./env.sh
 ```
 
-## Deployment
+## Using muCLIar
 
-Add additional notes about how to deploy this on a live system
+Once you are done installing muCLIar, now its time to enjoy this utility. All you have to do is run:
+
+```
+mu -s "name of the song"
+```
 
 ## Built With
 
@@ -69,15 +51,6 @@ Add additional notes about how to deploy this on a live system
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
@@ -85,6 +58,5 @@ This project is licensed under the Apache License - see the [LICENSE.md](LICENSE
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* [AdBlocking Extension](https://chrome.google.com/webstore/detail/video-ad-blocker-plus-for/hegneaniplmfjcmohoclabblbahcbjoe?hl=en) 
+
