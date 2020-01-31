@@ -39,6 +39,15 @@ cd muCLIar or cd /path/to/muCLIar
 ```
 ./env.sh
 ```
+4. You might encounter a XVFB display error. Just to ensure it doesn't happen, do the following: 
+
+```
+sudo apt-get update -y
+```
+
+```
+sudo apt-get install -y xvfb
+```
 <br>
 
 ## Using muCLIar
