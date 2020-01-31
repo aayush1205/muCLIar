@@ -36,10 +36,16 @@ cd muCLIar or cd /path/to/muCLIar
 
 ## Using muCLIar
 
-Once you are done installing muCLIar, now its time to enjoy this utility. All you have to do is run:
+1. Once you are done installing muCLIar, now its time to enjoy this utility. All you have to do is run:
 
 ```
 mu -s "name of the song"
+```
+
+2. To quit the player or to change the song to a new one, just generate a keyboard interrupt on the terminal:
+
+```
+Ctrl + C
 ```
 
 ## Built With
