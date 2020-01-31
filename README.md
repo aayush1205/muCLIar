@@ -12,6 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 1. Conda
+2. Ubuntu (Actively testing on some other distros)
 
 ### Installing
 
