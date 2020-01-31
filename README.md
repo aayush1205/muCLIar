@@ -104,11 +104,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 <br>
 
 ## Authors
+ 
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth) 
 
-
-See also the list of all the [contributors](https://github.com/aayush1205/muCLIar/contributors) who participated in this project.
+See the list of all the [contributors](https://github.com/aayush1205/muCLIar/contributors) who participated in this project.
 
 <br>
 
