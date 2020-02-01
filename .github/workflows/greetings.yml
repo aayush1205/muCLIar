@@ -1,0 +1,13 @@
+name: Greetings
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Make sure that you have clearly added the error code. Add relevant screenshots wherever possible.'' first issue'
+        pr-message: 'Make sure that your changes do not conflict with the core files (changing file directories will require a change in all called paths). Make sure you followed the original code structure. Add "[Refactor]" explicitly if you have refactored the code. Give us a few days to review your PR'' first pr'
