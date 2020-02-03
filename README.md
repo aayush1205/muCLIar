@@ -1,4 +1,4 @@
-# muCLIar <img src="https://i.ibb.co/641Jhrt/MUCLEAR2-001.png" alt="hydrogen animated logo" height="50px" align="right" />
+# muCLIar <img src="https://i.ibb.co/641Jhrt/MUCLEAR2-001.png" alt="hydrogen animated logo" height="70px" align="right" />
 
 [![Development Stage](https://img.shields.io/badge/Development-Public_Beta-blue)]() [![License](https://img.shields.io/github/license/aayush1205/muCLIar)](https://github.com/aayush1205/muCLIar/blob/master/LICENSE) [![Issues](https://img.shields.io/github/issues/aayush1205/muCLIar)](https://github.com/aayush1205/muCLIar/issues)
 
