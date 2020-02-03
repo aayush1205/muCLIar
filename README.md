@@ -16,6 +16,12 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 
 <br>
 
+## Note
+
+1. **muCLIar** is in **active development**. If you land into any weird errors, please feel free to open an issue. We would work on it as soon as possible. 
+2. We are still working on finding a workaround to let you login to your YouTube account so that your "favourite songs playlist" starts playing after the song finishes. We did have the login functionality before, but turns out, Google is now rejecting automated login.
+3. Another feature that we are developing is giving you the freedom to skip to the next song, and to pause and play the music.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
