@@ -5,7 +5,14 @@
 
 Coffee, Music and Code! What else could we developers ask for?
 
-But then, long gone are days of slow internet and locally stored songs. **muCLIar** is a command line utility that lets you play the song you wish to listen to, directly through your command line. muCLIar lets you log in to **Youtube** and hence plays your "similar song" playlist as well, so you can search a song and then enjoy the mood for a long while. 
+But then, long gone are days of slow internet and locally stored songs. **muCLIar** is a command line utility that lets you play the song you wish to listen to, directly through your command line. muCLIar lets you log in to **Youtube** and hence plays your "similar song" playlist as well, so you can search a song and then enjoy the mood for a long while.
+
+
+
+<p align = "center">
+<img src="muc_fin.gif">
+ </p>
+
 
 <br>
 
