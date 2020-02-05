@@ -10,9 +10,9 @@ import main_search
 chrome_options = Options()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.add_extension(os.path.dirname(os.path.abspath(__file__))+"/skipper_crx3.crx")
+chrome_options.add_extension(os.path.dirname(
+    os.path.abspath(__file__))+"/skipper_crx3.crx")
 socket.setdefaulttimeout(100)
-
 
 
 class Musify(object):
@@ -36,16 +36,15 @@ class Musify(object):
 
             obj = main_auth.Authenticate(chrome_options)
             obj.auth()
-            
+
         else:
 
-            try:                
-                obj = main_search.Search(options= chrome_options,song=self.song)
+            try:
+                obj = main_search.Search(
+                    options=chrome_options, song=self.song)
                 obj.search()
             except KeyboardInterrupt:
                 os._exit(1)
-
-
 
 
 def parse_args():
@@ -54,7 +53,7 @@ def parse_args():
     group = parser.add_mutually_exclusive_group()
 
     group.add_argument('-s', '--song', type=str,
-                        help="Enter the song you wish to hear")
+                       help="Enter the song you wish to hear")
     group.add_argument('-c', '--config', action='store_true')
     return parser.parse_args()
 
