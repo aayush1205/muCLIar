@@ -125,6 +125,14 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 <br>
 
+<br>
+
+## Python Code Style
+
+PEP8
+
+<br>
+
 ## Authors
  
 
