@@ -135,5 +135,5 @@ class Search():
         else:
 
             print("\n")
-            new_val = input(Fore.LIGHTBLUE_EX + "Enter valid inpur (n or q): ")
+            new_val = input(Fore.LIGHTBLUE_EX + "Enter valid input (n or q): ")
             self.quit(new_val)
