@@ -10,7 +10,7 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 
 
 <p align = "center">
-<img src="muc_fin.gif">
+<img src="https://i.imgur.com/MgLqMH0.gif">
  </p>
 
 
