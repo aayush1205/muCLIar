@@ -31,3 +31,4 @@ CURRDIR=$(dirname "$CURRDIR")
 
 sudo ln -s $CURRDIR/mu /usr/local/bin
 chmod 777 /usr/local/bin/mu
+chmod +x ./uninstall.sh
