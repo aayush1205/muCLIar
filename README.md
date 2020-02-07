@@ -17,23 +17,19 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 <br>
 
 ## Note
-
 1. **muCLIar** is in **active development**. If you land into unprecedented errors, please feel free to open an issue. We would work on it as soon as possible. 
 2. We are still working on finding a workaround to let you login to your YouTube account so that your "favourite songs playlist" starts playing after the current song finishes. We did have the login functionality before, but turns out, Google is now rejecting automated login.
 3. Another feature that we are developing is giving you the freedom to skip to the next song, and to pause and play the music.
 
 ## Getting Started
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-
 1. Conda
 2. Ubuntu (Actively testing on some other distros)
 3. Google Chrome
 
 ### Installing
-
 The repository has the installer script. This is what you need to do to get muCLIar running on your system:
 
 1. Clone the repository:
@@ -64,7 +60,6 @@ sudo apt-get install -y xvfb
 <br>
 
 ## Using muCLIar
-
 1. Once you are done installing muCLIar, now its time to enjoy this utility. All you have to do is run:
 
 ```
@@ -78,20 +73,17 @@ Ctrl + C
 ```
 
 ## Built With
-
 * [Selenium](https://selenium.dev/) - Automating Tool
 * [ChromeDriver](https://chromedriver.chromium.org/) - Web Driver
 
 <br>
 
 ## Contributing
-
 ### How to Contribute?
 * Make sure that your changes do not conflict with the core files (changing file directories will require a change in all called paths)
 * Follow the original code structure
 * Refactoring contributions are welcome, explicitly mention "[Refractor]" in your pull request
 * Give a few days to review PRs, code reviews are welcome 
-
 
 ### Steps to sync fork with master (Open Source Contributors):
 If you fork is behind from the master project you can do these to get the latest version in the master branch of your fork.
@@ -114,39 +106,23 @@ Open the terminal in this directory then enter the following commands in the ter
        //Switches to local master branch//
        $ git merge upstream/master
        //Merges the upstearm remote (Main repo) into your local fork//
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-<br>
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-<br>
-
+       
 <br>
 
 ## Python Code Style
-
 PEP8
 
 <br>
 
 ## Authors
- 
-
-
 See the list of all the [contributors](https://github.com/aayush1205/muCLIar/contributors) who participated in this project.
 
 <br>
 
 ## License
-
 This project is licensed under the Apache License - see the [LICENSE.md](LICENSE.md) file for details
 
 <br>
 
 ## Acknowledgments
-
 * [AdBlocking Extension](https://chrome.google.com/webstore/detail/video-ad-blocker-plus-for/hegneaniplmfjcmohoclabblbahcbjoe?hl=en) 
