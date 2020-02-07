@@ -19,7 +19,7 @@ fi
 if [[ $A == "80" ]]
 then 
     echo "Getting chrome driver for version 80 ..."
-    sudo wget -p /usr/local/bin https://chromedriver.storage.googleapis.com/80.0.3987.16/chromedriver_linux64.zip
+    sudo wget -P /usr/local/bin https://chromedriver.storage.googleapis.com/80.0.3987.16/chromedriver_linux64.zip
     sudo unzip /usr/local/bin/chromedriver_linux64.zip -d /usr/local/bin
 fi    
 
