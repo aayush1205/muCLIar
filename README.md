@@ -57,6 +57,15 @@ sudo apt-get update -y
 ```
 sudo apt-get install -y xvfb
 ```
+
+### Uninstalling
+
+Use the uninstaller script. It will handle all the deletions and script removal.
+
+```
+./uninstall.sh
+```
+
 <br>
 
 ## Using muCLIar
