@@ -1,5 +1,6 @@
 from ChromeDriver import CreateDriver
-
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 # TODO:
 # Issues from author's repo:
@@ -13,6 +14,7 @@ class Player():
         self.driver = CreateDriver()
         self.driver.get("https://youtube.com")
         self.url = "https://youtube.com"
+        self.actions = ActionChains(self.driver)
 
 
     def Search(self, song):
@@ -75,13 +77,27 @@ class Player():
         return next5
 
     def Next(self):
-        pass
+        """
+        Play next song
+        """
+
+        self.actions.send_keys(Keys.LEFT_SHIFT + 'N')
+        self.actions.perform()
+        
 
     def Prev(self):
-        pass
+        """
+        Play previous song
+        """
 
-    def Play(self):
-        pass
+        self.actions.send_keys(Keys.LEFT_SHIFT + 'P')
+        self.actions.perform()
 
-    def Pause(self):
-        pass
+
+    def PlayPause(self):
+        """
+        Toggle play state
+        """
+
+        self.actions.send_keys('k')
+        self.actions.perform()
