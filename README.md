@@ -102,7 +102,7 @@ Open the terminal in this directory then enter the following commands in the ter
 
        $ git remote -v 
        //Lists the current configured remote repository for your fork//
-       $ git remote add upstream https://github.com/Purukitto/Yuso_TravelApp.git
+       $ git remote add upstream https://github.com/aayush1205/muCLIar.git
        //Specifies a new remote upstream repository that will be synced with the fork//
        $ git remote -v
        //Should show the newly made remote *upstream* along with your previous remote//
