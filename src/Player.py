@@ -1,6 +1,5 @@
 from ChromeDriver import CreateDriver
-from bs4 import BeautifulSoup as bs
-import requests
+
 
 # TODO:
 # Issues from author's repo:
@@ -15,10 +14,6 @@ class Player():
         self.driver.get("https://youtube.com")
         self.url = "https://youtube.com"
 
-    
-    def ParsePage(self):
-        r = requests.get(self.url)
-        return bs(r, 'html5lib')
 
     def Search(self, song):
         """
