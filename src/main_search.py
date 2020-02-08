@@ -50,9 +50,9 @@ class Search():
                         del cookie['expiry']
 
                     driver.add_cookie(cookie)
-
-            driver.find_element_by_name(
-                "search_query").send_keys(f"{self.song}")
+            self.song = "+".join(self.song.split(' '))
+            driver.get(
+                "https://www.youtube.com/results?search_query="+self.song)
             driver.maximize_window()
             driver.find_element_by_id("search-icon-legacy").click()
             self.done = True
