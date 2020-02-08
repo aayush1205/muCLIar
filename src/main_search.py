@@ -23,6 +23,18 @@ class Search():
         self.done = False
         self.hasAd = False
 
+    def GetPlaylist(self, driver):
+        next5 = {}
+        for i in range(2,7):
+            link = driver.find_element_by_xpath(
+                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
+                +str(i)+r']/a').get_attribute('href')
+            title = driver.find_element_by_xpath(
+                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
+                +str(i)+r']/a/div/div[2]/h4/span').text
+            next5[link]=title
+        return next5
+
     def search(self):
 
         try:
@@ -50,9 +62,9 @@ class Search():
                         del cookie['expiry']
 
                     driver.add_cookie(cookie)
-
-            driver.find_element_by_name(
-                "search_query").send_keys(f"{self.song}")
+            self.song = "+".join(self.song.split(' '))
+            driver.get(
+                "https://www.youtube.com/results?search_query="+self.song)
             driver.maximize_window()
             driver.find_element_by_id("search-icon-legacy").click()
             self.done = True
@@ -71,6 +83,14 @@ class Search():
                 r'//*[@id="container"]/h1/yt-formatted-string').text
             print(Fore.LIGHTRED_EX +
                   f"Now Playing: {Fore.LIGHTCYAN_EX + str(info)}")
+
+            playlist = self.GetPlaylist(driver)
+
+            print(Fore.LIGHTRED_EX + "\nPlaylist:\n")
+
+            for i, name in enumerate(playlist.values()):
+                print(Fore.LIGHTRED_EX + 
+                   f"{i+1}: {Fore.LIGHTCYAN_EX + name}")
 
             try:
 
