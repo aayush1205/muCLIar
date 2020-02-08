@@ -1,5 +1,6 @@
 from ChromeDriver import CreateDriver
-
+from bs4 import BeautifulSoup as bs
+import requests
 
 # TODO:
 # Issues from author's repo:
@@ -12,6 +13,12 @@ class Player():
     def __init__(self):
         self.driver = CreateDriver()
         self.driver.get("https://youtube.com")
+        self.url = "https://youtube.com"
+
+    
+    def ParsePage(self):
+        r = requests.get(self.url)
+        return bs(r, 'html5lib')
 
     def Search(self, song):
         """
@@ -26,7 +33,8 @@ class Player():
         song = "+".join(song.split(' '))
         driver = self.driver
         driver.implicitly_wait(10)
-        driver.get("https://www.youtube.com/results?search_query="+song)
+        self.url = "https://www.youtube.com/results?search_query="+song
+        driver.get(self.url)
         driver.maximize_window()
         driver.find_element_by_id("search-icon-legacy").click()
         print("\n")
@@ -37,7 +45,7 @@ class Player():
     def GetSongTitle(self):
         """
         Get currently playing song's title.
-        
+
         Returns:
             str: Current song title
         """
@@ -49,6 +57,9 @@ class Player():
     def GetPlaylist(self):
         """
         Checks if there is any associated playlist for the current song.
+
+        Returns:
+            dict: Next 5 songs from associated playlist else None
         """
 
         try:
@@ -56,6 +67,17 @@ class Player():
                 "style-scope ytd-compact-radio-renderer").click()
         except:
             print("Might not be a song!! No associated playlist!!")
+            return None
+        next5 = {}
+        for i in range(2,7):
+            link = self.driver.find_element_by_xpath(
+                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
+                +str(i)+r']/a').get_attribute('href')
+            title = self.driver.find_element_by_xpath(
+                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
+                +str(i)+r']/a/div/div[2]/h4/span').text
+            next5[link]=title
+        return next5
 
     def Next(self):
         pass
