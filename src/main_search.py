@@ -14,6 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from pyvirtualdisplay import Display
 
+quitTitle = False
 
 class Search():
 
@@ -24,6 +25,38 @@ class Search():
         self.hasAd = False
         self.driver = webdriver.Chrome(options=self.chrome)
         self.actions = ActionChains(self.driver)
+        self.title = None
+        self.playlist = None
+
+
+    def display_title(self):
+        while True:
+            try:
+                info = self.driver.find_element_by_xpath(
+                        r'//*[@id="container"]/h1/yt-formatted-string').text
+                if (info != self.title and info != ''):
+                    print(Fore.LIGHTRED_EX +
+                            f"\nNow Playing: {Fore.LIGHTCYAN_EX + str(info)}")
+                    self.title = info
+            except Exception:
+                pass
+            global quitTitle
+            if quitTitle:
+                break
+
+    def look_up_playlist(self):           
+        try:
+            self.driver.find_element_by_class_name(
+                "style-scope ytd-compact-radio-renderer").click()
+            self.playlist = self.GetPlaylist()
+            print(Fore.LIGHTRED_EX + "\nPlaylist:\n")
+            for i, name in enumerate(self.playlist.values()):
+                print(Fore.LIGHTRED_EX + 
+                   f"{i+1}: {Fore.LIGHTCYAN_EX + name}")
+            print("\n")
+        except:
+            print("Might not be a song!! No associated playlist!!\n")
+            self.playlist = None
 
     def GetPlaylist(self):
         next5 = {}
@@ -74,50 +107,17 @@ class Search():
                 "style-scope ytd-video-renderer").click()
             self.done = True
             time.sleep(4)
-            try:
-                self.driver.find_element_by_class_name(
-                    "style-scope ytd-compact-radio-renderer").click()
-            except:
-                print("Might not be a song!! No associated playlist!!")
+            
 
             # info = self.driver.find_element_by_class_name("style-scope ytd-video-primary-info-renderer").text
-            info = self.driver.find_element_by_xpath(
-                r'//*[@id="container"]/h1/yt-formatted-string').text
-            print(Fore.LIGHTRED_EX +
-                  f"Now Playing: {Fore.LIGHTCYAN_EX + str(info)}")
+            self.displayCheck = threading.Thread(target=self.display_title)
+            self.displayCheck.start()
+            self.look_up_playlist()
 
-            playlist = self.GetPlaylist()
-
-            print(Fore.LIGHTRED_EX + "\nPlaylist:\n")
-
-            for i, name in enumerate(playlist.values()):
-                print(Fore.LIGHTRED_EX + 
-                   f"{i+1}: {Fore.LIGHTCYAN_EX + name}")
-
-            try:
-
-                while True:
-
-                    info2 = self.driver.find_element_by_xpath(
-                        r'//*[@id="container"]/h1/yt-formatted-string').text
-                    if(info2 != info):
-                        print(Fore.LIGHTRED_EX +
-                              f"\nNow Playing: {Fore.LIGHTCYAN_EX + str(info2)}")
-                        info = info2
-                        continue
-                    else:
-                        val = input(Fore.LIGHTRED_EX +
-                            "New song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>")
-                        self.action(val)
-
-            except KeyboardInterrupt:
-                # driver.find_element_by_id("movie_player").click()
-                # driver.quit()
-                display.stop()
-                print("\n")
+            while True:
                 val = input(Fore.LIGHTRED_EX +
-                            "New song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>")
-                return self.action(val)
+                    "New song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>")
+                self.action(val)
 
         except KeyboardInterrupt:
 
@@ -151,6 +151,7 @@ class Search():
             self.driver.get("https://www.youtube.com/results?search_query="+new_song)
             self.driver.find_element_by_class_name(
                 "style-scope ytd-video-renderer").click()
+            self.look_up_playlist()
             
 
         elif val.lower() == 'o':
@@ -170,8 +171,10 @@ class Search():
         
         elif val.lower() == "q":
             self.driver.quit()
+            global quitTitle
+            quitTitle = True
             print(Fore.WHITE + "\nQuitting...")
-            # display.stop()
+            display.stop()
             os._exit(1)
 
         else:
