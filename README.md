@@ -91,7 +91,7 @@ Ctrl + C
 ### How to Contribute?
 * Make sure that your changes do not conflict with the core files (changing file directories will require a change in all called paths)
 * Follow the original code structure
-* Refactoring contributions are welcome, explicitly mention "[Refractor]" in your pull request
+* Refactoring contributions are welcome, explicitly mention "[Refactor]" in your pull request
 * Give a few days to review PRs, code reviews are welcome 
 
 ### Steps to sync fork with master (Open Source Contributors):
