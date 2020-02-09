@@ -23,7 +23,7 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 
 ## Features
 
-1. Enjoy your music advertisement and hassle free right from your terminal in a single lined command.
+1. Enjoy your music,advertisement and hassle free,right from your terminal in a single lined command.
 2. Play/Pause/Switch between the songs using simple keypresses.
 3. Play the YouTube mix relevant to your song.
 
