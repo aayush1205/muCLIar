@@ -32,9 +32,9 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-1. Conda
-2. Ubuntu (Actively testing on some other distros)
-3. Google Chrome
+1. [Conda](https://docs.conda.io/en/latest/miniconda.html)
+2. [Ubuntu](https://ubuntu.com/)(Actively testing on some other distros)
+3. [Google Chrome](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAiA1fnxBRBBEiwAVUouUvzpOpZoXXgKyvMqvzo2yqnAOjBgWZXuuIWLdlD4libk5FFPlI0urhoC_2sQAvD_BwE&gclsrc=aw.ds)
 
 ### Installing
 The repository has the installer script. This is what you need to do to get muCLIar running on your system:
