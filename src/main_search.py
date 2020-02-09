@@ -13,6 +13,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from pyvirtualdisplay import Display
+from getkey import getkey
 
 quitTitle = False
 
@@ -115,8 +116,9 @@ class Search():
             self.look_up_playlist()
 
             while True:
-                val = input(Fore.LIGHTRED_EX +
+                print(Fore.LIGHTRED_EX +
                     "New song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>")
+                val = getkey()
                 self.action(val)
 
         except KeyboardInterrupt:
