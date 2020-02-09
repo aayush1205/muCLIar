@@ -24,6 +24,8 @@ class Search():
         self.song = song
         self.done = False
         self.hasAd = False
+        self.display = Display(visible=0, size=(1080, 1920))
+        self.display.start()
         self.driver = webdriver.Chrome(options=self.chrome)
         self.actions = ActionChains(self.driver)
         self.title = None
@@ -50,7 +52,7 @@ class Search():
             self.driver.find_element_by_class_name(
                 "style-scope ytd-compact-radio-renderer").click()
             self.playlist = self.GetPlaylist()
-            print(Fore.LIGHTRED_EX + "\nPlaylist:\n")
+            print(Fore.LIGHTRED_EX + "\nUp Next:\n")
             for i, name in enumerate(self.playlist.values()):
                 print(Fore.LIGHTRED_EX + 
                    f"{i+1}: {Fore.LIGHTCYAN_EX + name}")
@@ -79,12 +81,14 @@ class Search():
             t = threading.Thread(target=self.animate)
             t.start()
             options = self.chrome
+            #display = Display(visible=0, size=(1080, 1920))
+            #display.start()
             # options.add_argument('--headless')
-            display = Display(visible=0, size=(1080, 1920))
-            display.start()
+            
+            
             time.sleep(10)
             self.driver.implicitly_wait(10)
-            self.driver.get("https://www.youtube.com")
+            #self.driver.get("https://www.youtube.com")
 
             if os.path.isfile("cookies.pkl"):
 
@@ -97,9 +101,13 @@ class Search():
                         del cookie['expiry']
 
                     self.driver.add_cookie(cookie)
+
             self.song = "+".join(self.song.split(' '))
+            
+            
             self.driver.get(
                 "https://www.youtube.com/results?search_query="+self.song)
+            
             self.driver.maximize_window()
             self.driver.find_element_by_id("search-icon-legacy").click()
             self.done = True
@@ -116,10 +124,10 @@ class Search():
             self.look_up_playlist()
 
             while True:
-                print(Fore.LIGHTRED_EX +
-                    "New song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>")
+                print(Fore.LIGHTGREEN_EX +
+                    "\nNew song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>" + Fore.RESET)
                 val = getkey()
-                self.action(val)
+                self.action(val,display=self.display)
 
         except KeyboardInterrupt:
 
@@ -143,7 +151,7 @@ class Search():
 
         # sys.stdout.write('\rDone!\n')
 
-    def action(self, val):
+    def action(self, val,display):
         self.actions = ActionChains(self.driver)
         if val.lower() == "s":
             # display.stop()
