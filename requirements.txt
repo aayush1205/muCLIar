@@ -1,0 +1,4 @@
+PyVirtualDisplay==0.2.5
+getkey==0.6.5
+selenium==3.141.0
+colorama==0.4.1
