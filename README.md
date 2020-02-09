@@ -17,17 +17,24 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 <br>
 
 ## Note
-1. **muCLIar** is in **active development**. If you land into unprecedented errors, please feel free to open an issue. We would work on it as soon as possible. 
-2. We are still working on finding a workaround to let you login to your YouTube account so that your "favourite songs playlist" starts playing after the current song finishes. We did have the login functionality before, but turns out, Google is now rejecting automated login.
-3. Another feature that we are developing is giving you the freedom to skip to the next song, and to pause and play the music.
+1. Multiple new features are added. Do consider uninstalling once and installing the fresh version.
+2. **muCLIar** is in **active development**. If you land into unprecedented errors, please feel free to open an issue. We would work on it as soon as possible. 
+3. We are still working on finding a workaround to let you login to your YouTube account so that your "favourite songs playlist" starts playing after the current song finishes. We did have the login functionality before, but turns out, Google is now rejecting automated login.
+
+## Features
+
+1. Enjoy your music advertisement and hassle free right from your terminal in a single lined command.
+2. Play/Pause/Switch between the songs using simple keypresses.
+3. Play the YouTube mix relevant to your song.
+
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-1. Conda
-2. Ubuntu (Actively testing on some other distros)
-3. Google Chrome
+1. [Conda](https://docs.conda.io/en/latest/miniconda.html)
+2. [Ubuntu](https://ubuntu.com/)(Actively testing on some other distros)
+3. [Google Chrome](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAiA1fnxBRBBEiwAVUouUvzpOpZoXXgKyvMqvzo2yqnAOjBgWZXuuIWLdlD4libk5FFPlI0urhoC_2sQAvD_BwE&gclsrc=aw.ds)
 
 ### Installing
 The repository has the installer script. This is what you need to do to get muCLIar running on your system:
