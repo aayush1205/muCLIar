@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 import threading
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-#from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from pyvirtualdisplay import Display
 
@@ -22,14 +22,16 @@ class Search():
         self.song = song
         self.done = False
         self.hasAd = False
+        self.driver = webdriver.Chrome(options=self.chrome)
+        self.actions = ActionChains(self.driver)
 
-    def GetPlaylist(self, driver):
+    def GetPlaylist(self):
         next5 = {}
         for i in range(2,7):
-            link = driver.find_element_by_xpath(
+            link = self.driver.find_element_by_xpath(
                 r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
                 +str(i)+r']/a').get_attribute('href')
-            title = driver.find_element_by_xpath(
+            title = self.driver.find_element_by_xpath(
                 r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
                 +str(i)+r']/a/div/div[2]/h4/span').text
             next5[link]=title
@@ -46,10 +48,9 @@ class Search():
             # options.add_argument('--headless')
             display = Display(visible=0, size=(1080, 1920))
             display.start()
-            driver = webdriver.Chrome(options=options)
             time.sleep(10)
-            driver.implicitly_wait(10)
-            driver.get("https://www.youtube.com")
+            self.driver.implicitly_wait(10)
+            self.driver.get("https://www.youtube.com")
 
             if os.path.isfile("cookies.pkl"):
 
@@ -61,30 +62,31 @@ class Search():
 
                         del cookie['expiry']
 
-                    driver.add_cookie(cookie)
+                    self.driver.add_cookie(cookie)
             self.song = "+".join(self.song.split(' '))
-            driver.get(
+            self.driver.get(
                 "https://www.youtube.com/results?search_query="+self.song)
-            driver.maximize_window()
-            driver.find_element_by_id("search-icon-legacy").click()
+            self.driver.maximize_window()
+            self.driver.find_element_by_id("search-icon-legacy").click()
             self.done = True
             print("\n")
-            driver.find_element_by_class_name(
+            self.driver.find_element_by_class_name(
                 "style-scope ytd-video-renderer").click()
+            self.done = True
             time.sleep(4)
             try:
-                driver.find_element_by_class_name(
+                self.driver.find_element_by_class_name(
                     "style-scope ytd-compact-radio-renderer").click()
             except:
                 print("Might not be a song!! No associated playlist!!")
 
-            # info = driver.find_element_by_class_name("style-scope ytd-video-primary-info-renderer").text
-            info = driver.find_element_by_xpath(
+            # info = self.driver.find_element_by_class_name("style-scope ytd-video-primary-info-renderer").text
+            info = self.driver.find_element_by_xpath(
                 r'//*[@id="container"]/h1/yt-formatted-string').text
             print(Fore.LIGHTRED_EX +
                   f"Now Playing: {Fore.LIGHTCYAN_EX + str(info)}")
 
-            playlist = self.GetPlaylist(driver)
+            playlist = self.GetPlaylist()
 
             print(Fore.LIGHTRED_EX + "\nPlaylist:\n")
 
@@ -96,7 +98,7 @@ class Search():
 
                 while True:
 
-                    info2 = driver.find_element_by_xpath(
+                    info2 = self.driver.find_element_by_xpath(
                         r'//*[@id="container"]/h1/yt-formatted-string').text
                     if(info2 != info):
                         print(Fore.LIGHTRED_EX +
@@ -104,16 +106,18 @@ class Search():
                         info = info2
                         continue
                     else:
-                        continue
+                        val = input(Fore.LIGHTRED_EX +
+                            "New song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>")
+                        self.action(val)
 
             except KeyboardInterrupt:
                 # driver.find_element_by_id("movie_player").click()
-                driver.quit()
+                # driver.quit()
                 display.stop()
                 print("\n")
                 val = input(Fore.LIGHTRED_EX +
-                            "New song or quit? (enter n or q): ")
-                return self.quit(val)
+                            "New song: s\nPause: o\nNext song: p\nPrev song: i\nQuit: q\n>")
+                return self.action(val)
 
         except KeyboardInterrupt:
 
@@ -137,23 +141,40 @@ class Search():
 
         # sys.stdout.write('\rDone!\n')
 
-    def quit(self, val):
-
-        if val.lower() == "n":
-
+    def action(self, val):
+        self.actions = ActionChains(self.driver)
+        if val.lower() == "s":
             # display.stop()
             print("\n")
             new_song = input("Which Song: ")
-            new_obj = Search(options=self.chrome, song=new_song)
-            new_obj.search()
+            new_song = '+'.join(new_song.split(' '))
+            self.driver.get("https://www.youtube.com/results?search_query="+new_song)
+            self.driver.find_element_by_class_name(
+                "style-scope ytd-video-renderer").click()
+            
 
+        elif val.lower() == 'o':
+            self.actions.send_keys('k')
+            self.actions.perform()
+            self.actions = None
+
+        elif val.lower() == 'p':
+            self.actions.send_keys(Keys.LEFT_SHIFT + 'N')
+            self.actions.perform()
+            self.actions = None
+
+        elif val.lower() == 'i':
+            self.actions.send_keys(Keys.LEFT_SHIFT + 'P')
+            self.actions.perform()
+            self.actions = None
+        
         elif val.lower() == "q":
+            self.driver.quit()
             print(Fore.WHITE + "\nQuitting...")
             # display.stop()
             os._exit(1)
 
         else:
-
-            print("\n")
-            new_val = input(Fore.LIGHTBLUE_EX + "Enter valid input (n or q): ")
-            self.quit(new_val)
+            self.actions = None
+            print('Invalid option selected.\n')
+            return
