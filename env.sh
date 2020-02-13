@@ -4,7 +4,7 @@
 conda env create -f env.yaml
 eval "$(conda shell.bash hook)"
 conda activate test
-pip install PyVirtualDisplay==0.2.5
+pip install -r requirements.txt
 
 #get chromedriver
 RES="$(google-chrome --version)"
