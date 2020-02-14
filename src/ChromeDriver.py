@@ -13,7 +13,6 @@ def CreateDriver():
     options = Options()
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_extension(os.path.dirname(
-        os.path.abspath(__file__))+"/skipper_crx3.crx")
+    options.add_extension(os.path.dirname(os.path.abspath(__file__))+"/skipper_crx3.crx")
 
     return webdriver.Chrome(options=options)
