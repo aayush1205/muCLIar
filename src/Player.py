@@ -1,4 +1,4 @@
-from ChromeDriver import CreateDriver
+from ChromeDriver import create_driver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
@@ -9,7 +9,7 @@ class Player:
 
     def __init__(self):
         self.actions = None
-        self.driver = CreateDriver()
+        self.driver = create_driver()
         self.driver.get("https://youtube.com")
         self.url = "https://youtube.com"
 
@@ -53,10 +53,12 @@ class Player:
         next5 = {}
         for i in range(2,7):
             link = self.driver.find_element_by_xpath(
-                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
+                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div['
+                r'2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
                 + str(i) + r']/a').get_attribute('href')
             title = self.driver.find_element_by_xpath(
-                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
+                r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div['
+                r'2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
                 + str(i) + r']/a/div/div[2]/h4/span').text
             next5[link] = title
         return next5
@@ -96,3 +98,10 @@ class Player:
         """
         key_signal = 'k'
         self.action(key_signal)
+
+    def quit(self):
+        """
+        Quits application
+        :return:
+        """
+        self.driver.quit()
