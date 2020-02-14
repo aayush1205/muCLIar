@@ -1,18 +1,13 @@
+import os
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-
-import os
 
 
 def CreateDriver():
     """
     Create a webdriver instance of Chrome
-    Args: None
-
-    Returns:
-        Chrome driver instance
+    :return: Chrome driver instance
     """
 
     options = Options()
