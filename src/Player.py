@@ -3,28 +3,21 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
 # TODO:
-# Issues from author's repo:
-# Get playlist
-# Pause/Play, Previous, Next controls
-
 
 class Player():
 
     def __init__(self):
+        self.actions = None
         self.driver = CreateDriver()
         self.driver.get("https://youtube.com")
         self.url = "https://youtube.com"
-        self.actions = ActionChains(self.driver)
 
 
     def Search(self, song):
         """
         Search and play given song on YouTube.
-
-        Args:
-            song (str): Song name to be searched
-
-        Returns: None
+        :param (str) song: Song name to be searched
+        :return:
         """
 
         song = "+".join(song.split(' '))
@@ -34,7 +27,6 @@ class Player():
         driver.get(self.url)
         driver.maximize_window()
         driver.find_element_by_id("search-icon-legacy").click()
-        print("\n")
         driver.find_element_by_class_name(
             "style-scope ytd-video-renderer").click()
         self.GetPlaylist()
@@ -42,9 +34,7 @@ class Player():
     def GetSongTitle(self):
         """
         Get currently playing song's title.
-
-        Returns:
-            str: Current song title
+        :return (str): Current song title
         """
 
         info = self.driver.find_element_by_xpath(
@@ -54,9 +44,7 @@ class Player():
     def GetPlaylist(self):
         """
         Checks if there is any associated playlist for the current song.
-
-        Returns:
-            dict: Next 5 songs from associated playlist else None
+        :return (dict): Next 5 songs from associated playlist else None
         """
 
         try:
@@ -73,31 +61,42 @@ class Player():
             title = self.driver.find_element_by_xpath(
                 r'/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[4]/div[2]/div/ytd-playlist-panel-renderer/div/div[2]/ytd-playlist-panel-video-renderer['
                 +str(i)+r']/a/div/div[2]/h4/span').text
-            next5[link]=title
+            next5[link] = title
         return next5
+
+
+    def action(self, key_signal):
+        """
+        Control YouTube webplayer
+        :param (str) key_signal: Key combination string
+        :return:
+        """
+
+        self.actions = ActionChains(self.driver)
+        self.actions.send_keys(key_signal)
+        self.actions.perform()
+        self.actions = None
 
     def Next(self):
         """
         Play next song
+        :return:
         """
-
-        self.actions.send_keys(Keys.LEFT_SHIFT + 'N')
-        self.actions.perform()
-        
+        key_signal = Keys.LEFT_SHIFT + 'N'
+        self.action(key_signal)
 
     def Prev(self):
         """
         Play previous song
+        :return:
         """
-
-        self.actions.send_keys(Keys.LEFT_SHIFT + 'P')
-        self.actions.perform()
-
+        key_signal = Keys.LEFT_SHIFT + 'P'
+        self.action(key_signal)
 
     def PlayPause(self):
         """
         Toggle play state
+        :return:
         """
-
-        self.actions.send_keys('k')
-        self.actions.perform()
+        key_signal = 'k'
+        self.action(key_signal)
