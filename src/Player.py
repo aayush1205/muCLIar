@@ -17,6 +17,11 @@ class Player:
         self.url = "https://youtube.com"
         self.has_playlist = False
         self.has_cookies = self.check_credentials()
+        # Close loaded extension tab
+        self.driver.switch_to_window(self.driver.window_handles[1])
+        self.driver.close()
+        # Switch focus to first tab
+        self.driver.switch_to_window(self.driver.window_handles[0])
 
     def check_credentials(self):
         """
