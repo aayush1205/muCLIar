@@ -2,6 +2,8 @@ from ChromeDriver import create_driver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+import os
+import pickle
 
 # TODO:
 
@@ -14,6 +16,42 @@ class Player:
         self.driver.get("https://youtube.com")
         self.url = "https://youtube.com"
         self.has_playlist = False
+        self.has_cookies = self.check_credentials()
+
+    def check_credentials(self):
+        """
+        Checks locally stored cookies
+        :return (bool):
+        """
+        if os.path.isfile('cookies.pkl'):
+            with open('cookies.pkl', 'rb') as c:
+                cookies = pickle.load(c)
+
+                for cookie in cookies:
+                    if 'expiry' in cookie:
+                        del cookie['expiry']
+                    self.driver.add_cookie(cookie)
+            return True
+        else:
+            return False
+
+    def auth(self):
+        """
+        Prompts login if no login cookies are present
+        :return (int): Auth status: 0 Logged in; 1 Not logged in
+        """
+        if self.has_cookies:
+            return 0
+
+        self.driver.find_element_by_xpath(r'//*[@id="buttons"]/ytd-button-renderer/a').click()
+
+        while self.driver.current_url != "https://www.youtube.com/":
+            continue
+
+        with open('cookies.pkl', 'wb') as c:
+            pickle.dump(self.driver.get_cookies(), c)
+
+        return 1
 
     def search(self, song):
         """
