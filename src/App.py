@@ -8,6 +8,7 @@ import threading
 CURSOR_UP_ONE = '\x1b[1A'
 ERASE_LINE = '\x1b[2K'
 QUIT_SEARCH = False
+QUIT_DISPLAY = False
 LINE_BUFFER = 0
 
 
@@ -28,24 +29,48 @@ def search_animation():
 
 
 def display_info():
-	global LINE_BUFFER
-	delete_lines(LINE_BUFFER)
-	LINE_BUFFER = 13
+	new_title = 'Idle'
 
-	title = yt_music.get_song_title()
+	while True:
+		if QUIT_DISPLAY:
+			return
 
-	has_playlist = yt_music.get_playlist()
+		try:
+			title = yt_music.get_song_title()
+		except:
+			title = 'Idle'
 
-	if not has_playlist:
-		playlist = 'No playlist associated with this song.'
-		LINE_BUFFER -= 4
-	else:
-		playlist = '\n'.join([track for track in has_playlist.values()])
+		if new_title == title:
+			continue
+		else:
+			global LINE_BUFFER
+			delete_lines(LINE_BUFFER)
+			LINE_BUFFER = 13
 
-	controls = "New song: s\tPause: o\tNext song: p\tPrev song: i\tQuit: q\nSeek 5 seconds: ←/→\t" \
-			   "Volume: ↑/↓\tMute: m\n "
 
-	print('Now Playing: {}\n\nPlaylist:\n{}\n\nControls:\n{}\r'.format(title, playlist, controls))
+
+			try:
+				has_playlist = yt_music.get_playlist()
+				if not has_playlist:
+					playlist = 'No playlist associated with this song.'
+					LINE_BUFFER -= 4
+				else:
+					playlist = '\n'.join([track for track in has_playlist.values()])
+			except:
+				playlist = None
+				LINE_BUFFER -= 4
+
+			controls = "New song: s\tPause: o\tNext song: p\tPrev song: i\tQuit: q\nSeek 5 seconds: ←/→\t" \
+					   "Volume: ↑/↓\tMute: m\n "
+
+			print('Now Playing: {}\n\nPlaylist:\n{}\n\nControls:\n{}\r'.format(title, playlist, controls))
+
+			new_title = title
+			sleep(1)
+
+
+display = threading.Thread(target=display_info)
+display.start()
 
 
 # Launches chrome with YouTube landing page
@@ -65,8 +90,6 @@ while key != 'q':
 		anim.start()
 		QUIT_SEARCH = yt_music.search(song=song)
 		anim.join()
-
-		display_info()
 
 	if key == 'i':
 		yt_music.prev()
@@ -93,5 +116,6 @@ while key != 'q':
 		yt_music.volume_down()
 
 	elif key == 'q':
+		QUIT_DISPLAY = True
 		delete_lines(LINE_BUFFER)
 		yt_music.quit()
