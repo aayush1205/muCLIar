@@ -1,6 +1,7 @@
 from ChromeDriver import create_driver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
 
 # TODO:
 
@@ -12,6 +13,7 @@ class Player:
         self.driver = create_driver()
         self.driver.get("https://youtube.com")
         self.url = "https://youtube.com"
+        self.has_playlist = False
 
     def search(self, song):
         """
@@ -28,7 +30,7 @@ class Player:
         driver.maximize_window()
         driver.find_element_by_id("search-icon-legacy").click()
         driver.find_element_by_class_name("style-scope ytd-video-renderer").click()
-        self.get_playlist()
+        self.has_playlist = self.lookup_playlist()
         return True
 
     def get_song_title(self):
@@ -40,17 +42,25 @@ class Player:
         info = self.driver.find_element_by_xpath(r'//*[@id="container"]/h1/yt-formatted-string').text
         return info
 
-    def get_playlist(self):
+    def lookup_playlist(self):
         """
         Checks if there is any associated playlist for the current song.
-        :return (dict): Next 5 songs from associated playlist else None
+        :return:
         """
-
         try:
             self.driver.find_element_by_class_name("style-scope ytd-compact-radio-renderer").click()
-        except:
-            print("Might not be a song!! No associated playlist!!")
-            return None
+        except NoSuchElementException:
+            return False
+        return True
+
+    def get_playlist(self):
+        """
+        Get next 5 songs from playlist
+        :return (dict): Next 5 songs from associated playlist else None
+        """
+        if not self.has_playlist:
+            return False
+
         next5 = {}
         for i in range(2,7):
             link = self.driver.find_element_by_xpath(
