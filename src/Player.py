@@ -29,6 +29,7 @@ class Player:
         driver.find_element_by_id("search-icon-legacy").click()
         driver.find_element_by_class_name("style-scope ytd-video-renderer").click()
         self.get_playlist()
+        return True
 
     def get_song_title(self):
         """
@@ -97,6 +98,46 @@ class Player:
         :return:
         """
         key_signal = 'k'
+        self.action(key_signal)
+
+    def volume_up(self):
+        """
+        Volume up
+        :return:
+        """
+        key_signal = Keys.ARROW_UP
+        self.action(key_signal)
+
+    def volume_down(self):
+        """
+        Volume up
+        :return:
+        """
+        key_signal = Keys.ARROW_DOWN
+        self.action(key_signal)
+
+    def mute(self):
+        """
+        Volume up
+        :return:
+        """
+        key_signal = 'm'
+        self.action(key_signal)
+
+    def forward(self):
+        """
+        Volume up
+        :return:
+        """
+        key_signal = Keys.ARROW_RIGHT
+        self.action(key_signal)
+
+    def backward(self):
+        """
+        Volume up
+        :return:
+        """
+        key_signal = Keys.ARROW_LEFT
         self.action(key_signal)
 
     def quit(self):
