@@ -2,6 +2,7 @@ from ChromeDriver import create_driver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+from pyvirtualdisplay import Display
 import os
 import pickle
 
@@ -12,6 +13,8 @@ class Player:
 
     def __init__(self):
         self.actions = None
+        self.display = Display(visible=0, size=(1080, 1920))
+        self.display.start()
         self.driver = create_driver()
         self.driver.get("https://youtube.com")
         self.url = "https://youtube.com"
@@ -198,4 +201,6 @@ class Player:
         Quits application
         :return:
         """
+        self.display.stop()
         self.driver.quit()
+

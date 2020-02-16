@@ -96,8 +96,8 @@ def application(args):
 		else:
 			print('Logged in.')
 
-	display = threading.Thread(target=display_info)
-	display.start()
+	inf = threading.Thread(target=display_info)
+	inf.start()
 
 	yt_music.search(song=args.song)
 
