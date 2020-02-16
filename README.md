@@ -3,6 +3,8 @@
 [![Development Stage](https://img.shields.io/badge/Development-v.1.0.1-blue)]() [![License](https://img.shields.io/github/license/aayush1205/muCLIar)](https://github.com/aayush1205/muCLIar/blob/master/LICENSE) [![Issues](https://img.shields.io/github/issues/aayush1205/muCLIar)]() [![Stars](https://img.shields.io/github/stars/aayush1205/muCLIar?style=social)]()
 
 
+**Imp: Multiple new features are added. Do consider uninstalling once and installing the fresh version.**
+
 Coffee, Music and Code! What else could we developers ask for?
 
 But then, long gone are days of slow internet and locally stored songs. **muCLIar** is a command line utility that lets you play the song you wish to listen to, directly through your command line. muCLIar lets you log in to **Youtube** and hence plays your "similar song" playlist as well, so you can search a song and then enjoy the mood for a long while.
@@ -17,9 +19,8 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 <br>
 
 ## Note
-1. Multiple new features are added. Do consider uninstalling once and installing the fresh version.
-2. **muCLIar** is in **active development**. If you land into unprecedented errors, please feel free to open an issue. We would work on it as soon as possible. 
-3. We are still working on finding a workaround to let you login to your YouTube account so that your "favourite songs playlist" starts playing after the current song finishes. We did have the login functionality before, but turns out, Google is now rejecting automated login.
+1. **muCLIar** is in **active development**. If you land into unprecedented errors, please feel free to open an issue. We would work on it as soon as possible. 
+2. We are still working on finding a workaround to let you login to your YouTube account so that your "favourite songs playlist" starts playing after the current song finishes. We did have the login functionality before, but turns out, Google is now rejecting automated login.
 
 ## Features
 
