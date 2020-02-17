@@ -166,7 +166,7 @@ class Player:
 
     def volume_down(self):
         """
-        Volume up
+        Volume down
         :return:
         """
         key_signal = Keys.ARROW_DOWN
@@ -174,7 +174,7 @@ class Player:
 
     def mute(self):
         """
-        Volume up
+        Mute player
         :return:
         """
         key_signal = 'm'
@@ -182,7 +182,7 @@ class Player:
 
     def forward(self):
         """
-        Volume up
+        Seek 5 seconds forward
         :return:
         """
         key_signal = Keys.ARROW_RIGHT
@@ -190,7 +190,7 @@ class Player:
 
     def backward(self):
         """
-        Volume up
+        Seek 5 seconds back
         :return:
         """
         key_signal = Keys.ARROW_LEFT
