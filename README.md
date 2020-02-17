@@ -90,7 +90,7 @@ Ctrl + C
 ```
 
 ## Built With
-* [Selenium](https://selenium.dev/) - Automating Tool
+* [Selenium](https://selenium.dev/) - Automation Tool
 * [ChromeDriver](https://chromedriver.chromium.org/) - Web Driver
 
 <br>
