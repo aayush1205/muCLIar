@@ -5,6 +5,7 @@ from itertools import cycle
 from time import sleep
 import threading
 import argparse
+from colorama import Fore
 
 CURSOR_UP_ONE = '\x1b[1A'
 ERASE_LINE = '\x1b[2K'
@@ -28,7 +29,7 @@ def search_animation():
 			sys.stdout.write('\r\033[K')
 			sys.stdout.flush()
 			return
-		print('\rSearching ' + _, end='\r')
+		print(Fore.LIGHTCYAN_EX +  '\rSearching ' + _, end='\r'+ Fore.RESET)
 		sleep(0.1)
 
 
@@ -54,7 +55,7 @@ def display_info():
 			try:
 				has_playlist = yt_music.get_playlist()
 				if not has_playlist:
-					playlist = 'No playlist associated with this song.'
+					playlist = Fore.WHITE + 'No playlist associated with this song.' + Fore.RESET
 					LINE_BUFFER -= 4
 				else:
 					playlist = '\n'.join([track for track in has_playlist.values()])
@@ -63,9 +64,9 @@ def display_info():
 				LINE_BUFFER -= 4
 
 			controls = "New song: s\tPause: o\tNext song: p\tPrev song: i\tQuit: q\nSeek 5 seconds: ←/→\t" \
-					   "Volume: ↑/↓\tMute: m\n "
+					   "Volume: ↑/↓\tMute: m\n " 
 
-			print('Now Playing: {}\n\nPlaylist:\n{}\n\nControls:\n{}\r'.format(title, playlist, controls))
+			print((Fore.LIGHTCYAN_EX + f'Now Playing: {Fore.WHITE + title + Fore.RESET}\n\n'+ Fore.RESET) + (Fore.LIGHTCYAN_EX + f'Playlist:\n{Fore.WHITE + playlist + Fore.RESET}\n\n'+ Fore.RESET) + (Fore.LIGHTCYAN_EX + f'Controls:\n{Fore.WHITE + controls + Fore.RESET}\r' + Fore.RESET))
 
 			new_title = title
 			sleep(0.1)
@@ -107,7 +108,7 @@ def application(args):
 		key = getkey()
 
 		if key == 's':
-			song = input('Search new song: ')
+			song = input(Fore.WHITE + 'Search new song: ' + Fore.RESET)
 			delete_lines(1)
 
 			global QUIT_SEARCH

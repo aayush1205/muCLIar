@@ -5,6 +5,8 @@ conda env create -f env.yaml
 eval "$(conda shell.bash hook)"
 conda activate test
 pip install -r requirements.txt
+sudo apt-get update -y
+sudo apt-get install -y xvfb
 
 #get chromedriver
 RES="$(google-chrome --version)"
