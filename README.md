@@ -3,7 +3,7 @@
 [![Development Stage](https://img.shields.io/badge/Development-v.1.0.1-blue)]() [![License](https://img.shields.io/github/license/aayush1205/muCLIar)](https://github.com/aayush1205/muCLIar/blob/master/LICENSE) [![Issues](https://img.shields.io/github/issues/aayush1205/muCLIar)]() [![Stars](https://img.shields.io/github/stars/aayush1205/muCLIar?style=social)]()
 
 
-**Imp: Multiple new features are added. Do consider uninstalling once and installing the fresh version.**
+**Imp: Multiple new features were added. Do consider uninstalling once and installing the fresh version.**
 
 Coffee, Music and Code! What else could we developers ask for?
 
