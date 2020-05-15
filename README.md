@@ -32,10 +32,13 @@ But then, long gone are days of slow internet and locally stored songs. **muCLIa
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+### Supported Distributions:
+1. [Ubuntu](https://ubuntu.com/)
+2. [Arch Linux](https://www.archlinux.org/)
+
 ### Prerequisites
 1. [Conda](https://docs.conda.io/en/latest/miniconda.html)
-2. [Ubuntu](https://ubuntu.com/)(Actively testing on some other distros)
-3. [Google Chrome](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAiA1fnxBRBBEiwAVUouUvzpOpZoXXgKyvMqvzo2yqnAOjBgWZXuuIWLdlD4libk5FFPlI0urhoC_2sQAvD_BwE&gclsrc=aw.ds)
+2. [Google Chrome](https://www.google.com/chrome/?brand=CHBD&gclid=CjwKCAiA1fnxBRBBEiwAVUouUvzpOpZoXXgKyvMqvzo2yqnAOjBgWZXuuIWLdlD4libk5FFPlI0urhoC_2sQAvD_BwE&gclsrc=aw.ds)
 
 ### Installing
 The repository has the installer script. This is what you need to do to get muCLIar running on your system:
@@ -53,9 +56,18 @@ cd muCLIar or cd /path/to/muCLIar
 ```
 
 3. Run the installer: 
+
+
+a. For Ubuntu:
 ```
 ./env.sh
 ```
+b. For Arch Linux(might work in arch-based distros too: Manjaro, Velt etc.):
+
+```
+./arch_install.sh
+```
+
 4. You might encounter a XVFB display error. Just to ensure it doesn't happen, do the following: 
 
 ```
