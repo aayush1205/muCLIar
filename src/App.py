@@ -53,14 +53,15 @@ def display_info():
 			LINE_BUFFER = 13
 
 			try:
+				sleep(5)
 				has_playlist = yt_music.get_playlist()
 				if not has_playlist:
-					playlist = Fore.WHITE + 'No playlist associated with this song.' + Fore.RESET
+					playlist = 'No playlist associated with this song.'
 					LINE_BUFFER -= 4
 				else:
 					playlist = '\n'.join([track for track in has_playlist.values()])
 			except:
-				playlist = None
+				playlist = 'Idle'
 				LINE_BUFFER -= 4
 
 			controls = "New song: s\tPause: o\tNext song: p\tPrev song: i\tQuit: q\nSeek 5 seconds: ←/→\t" \
@@ -99,8 +100,12 @@ def application(args):
 
 	inf = threading.Thread(target=display_info)
 	inf.start()
-
-	yt_music.search(song=args.song)
+	global QUIT_SEARCH
+	QUIT_SEARCH = False
+	anim = threading.Thread(target=search_animation)
+	anim.start()
+	QUIT_SEARCH = yt_music.search(song=args.song)
+	anim.join()
 
 	key = ''
 
@@ -109,9 +114,7 @@ def application(args):
 
 		if key == 's':
 			song = input(Fore.WHITE + 'Search new song: ' + Fore.RESET)
-			delete_lines(1)
-
-			global QUIT_SEARCH
+			delete_lines(1)			
 			QUIT_SEARCH = False
 			anim = threading.Thread(target=search_animation)
 			anim.start()
