@@ -13,7 +13,7 @@ class Player:
 
     def __init__(self):
         self.actions = None
-        self.display = Display(visible=100, size=(1080, 1920))
+        self.display = Display(visible=0, size=(1080, 1920))
         self.display.start()
         self.driver = create_driver()
         self.driver.get("https://youtube.com")
