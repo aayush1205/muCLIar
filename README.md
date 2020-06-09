@@ -68,15 +68,9 @@ b. For Arch Linux(might work in arch-based distros too: Manjaro, Velt etc.):
 ./arch_install.sh
 ```
 
-4. You might encounter a XVFB display error. Just to ensure it doesn't happen, do the following: 
+~~4. You might encounter a XVFB display error. Just to ensure it doesn't happen, do the following:~~
 
-```
-sudo apt-get update -y
-```
-
-```
-sudo apt-get install -y xvfb
-```
+**UPD**: Player uses PyVirtualDisplay now.
 
 ### Uninstalling
 
