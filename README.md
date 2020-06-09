@@ -94,12 +94,7 @@ Use the uninstaller script. It will handle all the deletions and script removal.
 ```
 mu -s "name of the song"
 ```
-
-2. To quit the player or to change the song to a new one, just generate a keyboard interrupt on the terminal:
-
-```
-Ctrl + C
-```
+**UPD** : The player shows the controller on the terminal. 
 
 ## Built With
 * [Selenium](https://selenium.dev/) - Automation Tool
