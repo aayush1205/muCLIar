@@ -132,8 +132,12 @@ PEP8
 
 <br>
 
-## Authors
-See the list of all the [contributors](https://github.com/aayush1205/muCLIar/contributors) who participated in this project.
+## Contributors
+<a href="https://github.com/aayush1205/muCLIar/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=aayush1205/muCLIar" />
+</a>
+
+Made with [contributors-img](https://contributors-img.web.app).
 
 <br>
 
