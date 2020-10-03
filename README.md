@@ -137,8 +137,6 @@ PEP8
   <img src="https://contributors-img.web.app/image?repo=aayush1205/muCLIar" />
 </a>
 
-Made with [contributors-img](https://contributors-img.web.app).
-
 <br>
 
 ## License
